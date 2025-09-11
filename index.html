@@ -1,316 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport Club Corinthians Paulista - O Time do Povo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Corinthians - Uma História de Glórias</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #101010;
-        }
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1589952541022-835c233c6126?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Efeito Parallax */
-        }
-        /* Animações de entrada */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: white;
-            transition: width .3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="text-white antialiased">
+<body>
 
-    <!-- Cabeçalho -->
-    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-black uppercase tracking-wider">Corinthians</h1>
-            <div class="flex items-center">
-                <!-- Menu Desktop -->
-                <ul class="hidden md:flex space-x-8 mr-6">
-                    <li><a href="#historia" class="nav-link transition-colors">História</a></li>
-                    <li><a href="#titulos" class="nav-link transition-colors">Títulos</a></li>
-                    <li><a href="#idolos" class="nav-link transition-colors">Ídolos</a></li>
-                    <li><a href="#noticias" class="nav-link transition-colors">Notícias</a></li>
-                    <li><a href="#contato" class="nav-link transition-colors">Contato</a></li>
-                </ul>
-                 <!-- Controles de Acessibilidade -->
-                <div class="flex items-center border border-gray-600 rounded-full mr-4">
-                    <button id="decrease-font" class="px-3 py-1 text-sm font-bold hover:bg-gray-700 rounded-l-full" aria-label="Diminuir fonte">A-</button>
-                    <button id="increase-font" class="px-3 py-1 text-sm font-bold hover:bg-gray-700 rounded-r-full border-l border-gray-600" aria-label="Aumentar fonte">A+</button>
-                </div>
-                <!-- Botão do Menu Mobile -->
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+    <header id="main-header">
+        <nav class="container">
+            <span class="logo">SCCP</span>
+            <div class="nav-links">
+                <a href="#era-fundacao">1910</a>
+                <a href="#era-invasao">1976</a>
+                <a href="#era-democracia">1982</a>
+                <a href="#era-glorias">2012</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="acessibilidade-toolbar">
+                <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
+                <button id="diminuir-fonte" aria-label="Diminuir fonte">A-</button>
+                <button id="alterna-contraste" aria-label="Alternar contraste"><i class="bi bi-circle-half"></i></button>
             </div>
         </nav>
-        <!-- Menu Mobile (oculto por padrão) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/90">
-            <a href="#historia" class="block text-center py-3 px-4 text-sm hover:bg-gray-800">História</a>
-            <a href="#titulos" class="block text-center py-3 px-4 text-sm hover:bg-gray-800">Títulos</a>
-            <a href="#idolos" class="block text-center py-3 px-4 text-sm hover:bg-gray-800">Ídolos</a>
-            <a href="#noticias" class="block text-center py-3 px-4 text-sm hover:bg-gray-800">Notícias</a>
-            <a href="#contato" class="block text-center py-3 px-4 text-sm hover:bg-gray-800">Contato</a>
-        </div>
     </header>
 
-    <!-- Seção Principal (Hero) -->
-    <section class="hero-bg py-28 md:py-40 text-center">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-wider animate-fade-in-up">Time do Povo</h2>
-            <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-200 animate-fade-in-up" style="animation-delay: 0.2s;">"O Corinthians vai ser o time do povo e o povo é quem vai fazer o time." - Miguel Battaglia, 1º Presidente.</p>
-        </div>
-    </section>
+    <main>
+        <section id="era-fundacao" class="parallax-section">
+            <div class="section-content">
+                <h1 class="era-ano">1910</h1>
+                <h2 class="era-titulo">O Time do Povo Nasce</h2>
+                <p class="era-descricao">
+                    Fundado por cinco operários à luz de um lampião, o Corinthians nasceu do sonho popular. Mais que um clube, uma religião com milhões de fiéis desde o primeiro dia.
+                </p>
+            </div>
+        </section>
 
-    <main class="container mx-auto px-6 py-12 md:py-20">
-
-        <!-- Seção de História -->
-        <section id="historia" class="mb-16 md:mb-24 scroll-mt-20">
-            <div class="animated-section fade-in-up">
-                <h3 class="text-3xl font-bold text-center mb-8">Nossa História</h3>
-                <div class="bg-gray-900/50 p-8 rounded-lg shadow-2xl max-w-4xl mx-auto border border-gray-700">
-                    <p class="text-gray-300 leading-relaxed">
-                        Em 1º de setembro de 1910, no bairro do Bom Retiro, em São Paulo, um grupo de cinco operários — Joaquim Ambrósio, Antônio Pereira, Rafael Perrone, Anselmo Corrêa e Carlos Silva — fundou o Sport Club Corinthians Paulista. O nome foi inspirado no Corinthian FC, um time inglês que excursionava pelo Brasil.
-                    </p>
-                    <br>
-                    <p class="text-gray-300 leading-relaxed">
-                        Com a ajuda de outros moradores do bairro, o primeiro campo foi um terreno alugado na Rua José Paulino, que foi capinado e aplainado para os treinos. A paixão popular e a garra demonstrada desde o início foram os pilares que transformaram o clube em uma das maiores potências do futebol brasileiro e mundial.
-                    </p>
-                </div>
+        <section id="era-invasao" class="parallax-section">
+            <div class="section-content">
+                <h1 class="era-ano">1976</h1>
+                <h2 class="era-titulo">A Invasão do Maracanã</h2>
+                <p class="era-descricao">
+                    Um êxodo sem precedentes. Mais de 70.000 corinthianos viajaram ao Rio de Janeiro e dividiram o Maracanã, mostrando ao Brasil a força incomparável da Fiel Torcida.
+                </p>
             </div>
         </section>
         
-        <!-- Seção de Títulos -->
-        <section id="titulos" class="mb-16 md:mb-24 scroll-mt-20">
-            <div class="animated-section fade-in-up">
-                <h3 class="text-3xl font-bold text-center mb-12">Principais Conquistas</h3>
-                <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div>
-                        <p class="text-5xl font-black">2x</p>
-                        <p class="text-gray-400">Mundial de Clubes FIFA</p>
-                    </div>
-                    <div>
-                        <p class="text-5xl font-black">1x</p>
-                        <p class="text-gray-400">Copa Libertadores</p>
-                    </div>
-                    <div>
-                        <p class="text-5xl font-black">7x</p>
-                        <p class="text-gray-400">Campeonato Brasileiro</p>
-                    </div>
-                     <div>
-                        <p class="text-5xl font-black">30x</p>
-                        <p class="text-gray-400">Campeonato Paulista</p>
-                    </div>
-                </div>
+        <section id="era-democracia" class="parallax-section">
+            <div class="section-content">
+                <h1 class="era-ano">1982</h1>
+                <h2 class="era-titulo">Democracia Corinthiana</h2>
+                <p class="era-descricao">
+                    Em meio à ditadura militar, um movimento liderado por ídolos como Sócrates e Casagrande transformou o clube. Todas as decisões, do campo à concentração, eram decididas no voto.
+                </p>
             </div>
         </section>
 
-        <!-- Seção de Ídolos -->
-        <section id="idolos" class="mb-16 md:mb-24 scroll-mt-20">
-             <div class="animated-section fade-in-up">
-                <h3 class="text-3xl font-bold text-center mb-12">Ídolos Eternos</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Card Ídolo 1 -->
-                    <div class="bg-gray-900 rounded-lg overflow-hidden text-center transform hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-800">
-                        <img src="https://images.unsplash.com/photo-1614632537197-3801704169a3?q=80&w=1974&auto=format&fit=crop" alt="[Imagem de um jogador de futebol com estilo retrô, representando Sócrates]" class="w-full h-64 object-cover object-top" onerror="this.onerror=null;this.src='https://placehold.co/400x400/111111/FFFFFF?text=Imagem+Indispon%C3%ADvel';">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold">Sócrates</h4>
-                            <p class="text-gray-400">O Doutor da Democracia Corinthiana.</p>
-                        </div>
-                    </div>
-                    <!-- Card Ídolo 2 -->
-                    <div class="bg-gray-900 rounded-lg overflow-hidden text-center transform hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-800">
-                        <img src="https://images.unsplash.com/photo-1559521783-a2334b355594?q=80&w=1974&auto=format&fit=crop" alt="[Imagem de um goleiro em ação, representando Cássio]" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/111111/FFFFFF?text=Imagem+Indispon%C3%ADvel';">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold">Cássio</h4>
-                            <p class="text-gray-400">O Gigante das nossas maiores glórias.</p>
-                        </div>
-                    </div>
-                    <!-- Card Ídolo 3 -->
-                    <div class="bg-gray-900 rounded-lg overflow-hidden text-center transform hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-800">
-                        <img src="https://images.unsplash.com/photo-1517423399196-6c7e4a1c0e35?q=80&w=1974&auto=format&fit=crop" alt="[Imagem de um jogador comemorando um gol, representando Marcelinho Carioca]" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/111111/FFFFFF?text=Imagem+Indispon%C3%ADvel';">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold">Marcelinho</h4>
-                            <p class="text-gray-400">O Pé-de-Anjo que encantou a Fiel.</p>
-                        </div>
-                    </div>
-                </div>
+        <section id="era-glorias" class="parallax-section">
+             <div class="section-content">
+                <h1 class="era-ano">2012</h1>
+                <h2 class="era-titulo">O Mundo é Preto e Branco</h2>
+                <p class="era-descricao">
+                    Após a conquista invicta da Libertadores, o Corinthians viajou ao Japão com mais de 30.000 torcedores e, contra o Chelsea, conquistou o mundo pela segunda vez.
+                </p>
             </div>
         </section>
 
-        <!-- Seção de Notícias -->
-        <section id="noticias" class="mb-16 md:mb-24 scroll-mt-20">
-             <div class="animated-section fade-in-up">
-                <h3 class="text-3xl font-bold text-center mb-12">Últimas Notícias</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Card de Notícia 1 -->
-                    <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-800 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2070&auto=format&fit=crop" alt="[Imagem de uma bola de futebol no centro do campo]" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/FFFFFF?text=Imagem+Indispon%C3%ADvel';">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <span class="text-xs font-semibold text-gray-400 uppercase mb-2">Futebol Masculino</span>
-                            <h4 class="text-xl font-bold mb-2">Timão se prepara para clássico decisivo no fim de semana</h4>
-                            <p class="text-gray-400 text-sm flex-grow">Equipe treina forte para o confronto que pode valer a liderança do campeonato.</p>
-                            <a href="#" class="mt-4 text-white font-semibold self-start hover:underline">Leia mais &rarr;</a>
-                        </div>
-                    </div>
-                    <!-- Card de Notícia 2 -->
-                    <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-800 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://images.unsplash.com/photo-1606161353284-1e51e23f114d?q=80&w=1974&auto=format&fit=crop" alt="[Imagem de um jogador de futebol assinando contrato]" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/FFFFFF?text=Imagem+Indispon%C3%ADvel';">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <span class="text-xs font-semibold text-gray-400 uppercase mb-2">Mercado da Bola</span>
-                            <h4 class="text-xl font-bold mb-2">Corinthians anuncia novo reforço para o meio-campo</h4>
-                            <p class="text-gray-400 text-sm flex-grow">Jogador chega para fortalecer o elenco na continuação da temporada.</p>
-                            <a href="#" class="mt-4 text-white font-semibold self-start hover:underline">Leia mais &rarr;</a>
-                        </div>
-                    </div>
-                    <!-- Card de Notícia 3 -->
-                    <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-800 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://images.unsplash.com/photo-1528819622765-d6bcf132f793?q=80&w=2070&auto=format&fit=crop" alt="[Imagem de torcedores no estádio com bandeiras]" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111111/FFFFFF?text=Imagem+Indispon%C3%ADvel';">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <span class="text-xs font-semibold text-gray-400 uppercase mb-2">Fiel Torcedor</span>
-                            <h4 class="text-xl font-bold mb-2">Nova campanha de sócios-torcedores é lançada com benefícios exclusivos</h4>
-                            <p class="text-gray-400 text-sm flex-grow">Clube busca aproximar ainda mais a torcida e oferece novas vantagens no programa.</p>
-                            <a href="#" class="mt-4 text-white font-semibold self-start hover:underline">Leia mais &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Contato -->
-        <section id="contato" class="scroll-mt-20">
-             <div class="animated-section fade-in-up">
-                <h3 class="text-3xl font-bold text-center mb-8">Entre em Contato</h3>
-                <form id="contact-form" class="max-w-xl mx-auto bg-gray-900/50 p-8 rounded-lg shadow-2xl border border-gray-700">
-                    <div id="form-content">
-                        <div class="mb-6">
-                            <label for="name" class="block text-gray-300 mb-2">Nome</label>
-                            <input type="text" id="name" name="name" class="w-full bg-gray-800 border border-gray-600 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-white/50" required>
-                        </div>
-                        <div class="mb-6">
-                            <label for="email" class="block text-gray-300 mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full bg-gray-800 border border-gray-600 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-white/50" required>
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-300 mb-2">Mensagem</label>
-                            <textarea id="message" name="message" rows="4" class="w-full bg-gray-800 border border-gray-600 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-white/50" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors w-full sm:w-auto">Enviar Mensagem</button>
-                        </div>
-                    </div>
-                    <div id="success-message" class="hidden text-center">
-                        <h4 class="text-2xl font-bold mb-4">Obrigado!</h4>
-                        <p>Sua mensagem foi enviada. Vai, Corinthians!</p>
-                    </div>
+        <section id="contato" class="form-section">
+            <div class="container">
+                <h2 class="form-title">Entre em Contato</h2>
+                <form class="feedback-form">
+                    <input type="text" placeholder="Seu nome" required>
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+                    <button type="submit" class="btn-submit">Enviar</button>
                 </form>
             </div>
         </section>
-
     </main>
 
-    <!-- Rodapé -->
-    <footer class="bg-black mt-16 md:mt-24">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" aria-label="Facebook do Corinthians" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238 .195 2.238 .195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
-                <a href="#" aria-label="Twitter do Corinthians" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
-                <a href="#" aria-label="Instagram do Corinthians" class="hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427.465C9.793 2.013 10.147 2 12.315 2zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zM12 14.25a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5zM16.882 8.25a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" clip-rule="evenodd" /></svg></a>
-            </div>
-            <p>Projeto fictício para fins de estudo. Desenvolvido com carinho por um Fiel.</p>
-            <p>&copy; 2024 - Todos os direitos reservados.</p>
-        </div>
+    <footer id="main-footer">
+        <p>
+            Desenvolvido por Daniel | 
+            <a href="https://www.instagram.com/dan13l_23x/" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-instagram"></i> @dan13l_23x
+            </a>
+        </p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Lógica para o menu mobile
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Fecha o menu mobile ao clicar em um link
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-
-            // Lógica para animação de scroll
-            const animatedSections = document.querySelectorAll('.animated-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            animatedSections.forEach(section => {
-                observer.observe(section);
-            });
-
-            // Lógica para acessibilidade da fonte
-            const increaseFontBtn = document.getElementById('increase-font');
-            const decreaseFontBtn = document.getElementById('decrease-font');
-            const htmlEl = document.documentElement;
-
-            increaseFontBtn.addEventListener('click', () => {
-                let currentSize = parseFloat(window.getComputedStyle(htmlEl).fontSize);
-                if (currentSize < 22) { // Limite máximo para não quebrar o layout
-                    htmlEl.style.fontSize = (currentSize + 1) + 'px';
-                }
-            });
-
-            decreaseFontBtn.addEventListener('click', () => {
-                let currentSize = parseFloat(window.getComputedStyle(htmlEl).fontSize);
-                if (currentSize > 12) { // Limite mínimo
-                    htmlEl.style.fontSize = (currentSize - 1) + 'px';
-                }
-            });
-
-            // Lógica para o formulário de contato
-            const contactForm = document.getElementById('contact-form');
-            const formContent = document.getElementById('form-content');
-            const successMessage = document.getElementById('success-message');
-
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                formContent.classList.add('hidden');
-                successMessage.classList.remove('hidden');
-            });
-        });
-    </script>
-
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
