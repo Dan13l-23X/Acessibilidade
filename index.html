@@ -3,80 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corinthians - Uma História de Glórias</title>
+    <title>Corinthians - Alma e Raça</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    
-    <link rel="stylesheet" href="styles.css">
-</head>
+
+    <style>
+        /* --- RESET E CONFIGURAÇÕES GERAIS --- */
+        :root {
+            --cor-preto: #000000;
+            --cor-branco: #FFFFFF;
+            --cor-cinza: #e9e9e9;
+            --cor-texto: #1a1a1a;
+            --fonte-principal: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px; /* Base para o JS de acessibilidade */
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--fonte-principal);
+            background-color: var(--cor-branco);
+            color: var(--cor-texto);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* --- CABEÇALHO FIXO --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--cor-preto);
+        }
+
+        .acessibilidade-toolbar button {
+            background-color: var(--cor-preto);
+            color: var(--cor-branco);
+            border: none;
+            border-radius: 5px;
+            width: 40px;
+            height: 30px;
+            margin-left: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .acessibilidade-toolbar button:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- SEÇÃO DE ABERTURA (HERO) --- */
+        .hero {
+            background-color: var(--cor-preto);
+            color: var(--cor-branco);
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem); /* Fonte responsiva */
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* --- SEÇÕES DE CONTEÚDO (CARD) --- */
+        .card-section {
+            background-color: var(--cor-cinza);
+        }
+
+        .card {
+            background-color: var(--cor-branco);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-top: 0;
+        }
+
+        .card p {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* --- SEÇÃO FORMULÁRIO --- */
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        .feedback-form input, .feedback-form textarea {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--fonte-principal);
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            padding: 15px;
+            background-color: var(--cor-preto);
+            color: var(--cor-branco);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #333;
+        }
+
+        /* --- RODAPÉ --- */
+        footer {
+            background-color: var(--cor-preto);
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+        }
+        footer a {
+            color: var(--cor-branco);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* --- MODO DE ALTO CONTRASTE --- */
+        body.high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+        body.high-contrast header {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid #fff;
+        }
+        body.high-contrast .logo, body.high-contrast a {
+            color: #FFFF00 !important; /* Amarelo para alta visibilidade */
+        }
+        body.high-contrast .card-section, body.high-contrast .card {
+            background-color: #000;
+        }
+        body.high-contrast .card {
+            border: 1px solid #fff;
+        }
+        body.high-contrast .acessibilidade-toolbar button {
+             background-color: #FFFF00;
+             color: #000;
+        }
+        body.high-contrast .btn-submit {
+            background-color: #FFFF00;
+            color: #000;
+        }
+    </style>
+    </head>
 <body>
 
-    <header id="main-header">
-        <nav class="container">
-            <span class="logo">SCCP</span>
-            <div class="nav-links">
-                <a href="#era-fundacao">1910</a>
-                <a href="#era-invasao">1976</a>
-                <a href="#era-democracia">1982</a>
-                <a href="#era-glorias">2012</a>
-                <a href="#contato">Contato</a>
-            </div>
+    <header>
+        <div class="container">
+            <div class="logo">SCCP</div>
             <div class="acessibilidade-toolbar">
                 <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
                 <button id="diminuir-fonte" aria-label="Diminuir fonte">A-</button>
                 <button id="alterna-contraste" aria-label="Alternar contraste"><i class="bi bi-circle-half"></i></button>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main>
-        <section id="era-fundacao" class="parallax-section">
-            <div class="section-content">
-                <h1 class="era-ano">1910</h1>
-                <h2 class="era-titulo">O Time do Povo Nasce</h2>
-                <p class="era-descricao">
-                    Fundado por cinco operários à luz de um lampião, o Corinthians nasceu do sonho popular. Mais que um clube, uma religião com milhões de fiéis desde o primeiro dia.
-                </p>
-            </div>
-        </section>
-
-        <section id="era-invasao" class="parallax-section">
-            <div class="section-content">
-                <h1 class="era-ano">1976</h1>
-                <h2 class="era-titulo">A Invasão do Maracanã</h2>
-                <p class="era-descricao">
-                    Um êxodo sem precedentes. Mais de 70.000 corinthianos viajaram ao Rio de Janeiro e dividiram o Maracanã, mostrando ao Brasil a força incomparável da Fiel Torcida.
-                </p>
-            </div>
-        </section>
-        
-        <section id="era-democracia" class="parallax-section">
-            <div class="section-content">
-                <h1 class="era-ano">1982</h1>
-                <h2 class="era-titulo">Democracia Corinthiana</h2>
-                <p class="era-descricao">
-                    Em meio à ditadura militar, um movimento liderado por ídolos como Sócrates e Casagrande transformou o clube. Todas as decisões, do campo à concentração, eram decididas no voto.
-                </p>
-            </div>
-        </section>
-
-        <section id="era-glorias" class="parallax-section">
-             <div class="section-content">
-                <h1 class="era-ano">2012</h1>
-                <h2 class="era-titulo">O Mundo é Preto e Branco</h2>
-                <p class="era-descricao">
-                    Após a conquista invicta da Libertadores, o Corinthians viajou ao Japão com mais de 30.000 torcedores e, contra o Chelsea, conquistou o mundo pela segunda vez.
-                </p>
-            </div>
-        </section>
-
-        <section id="contato" class="form-section">
+        <section class="hero">
             <div class="container">
-                <h2 class="form-title">Entre em Contato</h2>
+                <h1>ALMA E RAÇA</h1>
+                <p>Mais que um time. Uma nação de 30 milhões de apaixonados.</p>
+            </div>
+        </section>
+
+        <section class="card-section">
+            <div class="container">
+                <div class="card">
+                    <h2>Nossa História</h2>
+                    <p>Fundado em 1910 por operários, o Sport Club Corinthians Paulista nasceu para ser o time do povo. Sua história é marcada por lutas, superação e uma conexão visceral com sua torcida, a Fiel. Desde a Democracia Corinthiana até as conquistas mundiais, o clube sempre foi uma voz ativa dentro e fora de campo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato">
+             <div class="container">
+                <h2 class="form-title">Deixe seu Feedback</h2>
                 <form class="feedback-form">
                     <input type="text" placeholder="Seu nome" required>
                     <input type="email" placeholder="Seu e-mail" required>
@@ -87,8 +252,8 @@
         </section>
     </main>
 
-    <footer id="main-footer">
-        <p>
+    <footer>
+         <p>
             Desenvolvido por Daniel | 
             <a href="https://www.instagram.com/dan13l_23x/" target="_blank" rel="noopener noreferrer">
                 <i class="bi bi-instagram"></i> @dan13l_23x
@@ -96,7 +261,52 @@
         </p>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="script.js"></script>
-</body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- LÓGICA DE ACESSIBILIdade ---
+            const aumentarFonteBtn = document.getElementById('aumentar-fonte');
+            const diminuirFonteBtn = document.getElementById('diminuir-fonte');
+            const alternaContrasteBtn = document.getElementById('alterna-contraste');
+            const body = document.body;
+            const html = document.documentElement;
+
+            let fontSize = 16;
+            const minFontSize = 12;
+            const maxFontSize = 22;
+
+            // Função para ajustar o tamanho da fonte
+            function ajustarFonte(novaFonte) {
+                if (novaFonte >= minFontSize && novaFonte <= maxFontSize) {
+                    fontSize = novaFonte;
+                    html.style.fontSize = fontSize + 'px';
+                    localStorage.setItem('fontSize', fontSize);
+                }
+            }
+            
+            aumentarFonteBtn.addEventListener('click', () => ajustarFonte(fontSize + 1));
+            diminuirFonteBtn.addEventListener('click', () => ajustarFonte(fontSize - 1));
+
+            // Função para alternar contraste
+            alternaContrasteBtn.addEventListener('click', function() {
+                body.classList.toggle('high-contrast');
+                localStorage.setItem('highContrast', body.classList.contains('high-contrast') ? 'enabled' : 'disabled');
+            });
+
+            // Função para carregar preferências salvas
+            function carregarPreferencias() {
+                if (localStorage.getItem('highContrast') === 'enabled') {
+                    body.classList.add('high-contrast');
+                }
+                const savedFontSize = localStorage.getItem('fontSize');
+                if (savedFontSize) {
+                    ajustarFonte(parseInt(savedFontSize, 10));
+                }
+            }
+            
+            carregarPreferencias();
+        });
+    </script>
+    </body>
 </html>
